@@ -7,14 +7,14 @@
             <h3 id="suggestionMessage">Veuillez vous identifier</h3>
 
                 <div class="pseudoDiv">
-                    <input id="pseudo" type="text" name="pseudo" placeholder="Pseudo">
+                    <input id="pseudo" type="text" name="pseudo" placeholder="Pseudo" [(ngModel)]="auth.pseudo">
                 </div><br>
 
                 <div class="passwordDiv">
-                    <input id="password" type="password" name="password" placeholder="Mot de passe">
+                    <input id="password" type="password" name="password" placeholder="Mot de passe" [(ngModel)]="auth.password">
                 </div><br>
-                
-                    <input id="loginBtn" type="button" value="Login">
+                    <input id="loginBtn" type="button" value="Login" (click)="register()">
+                <div *ngIf="isAuth">AUTHENTIFY</div>
         </div>
     </div>
 </div>
