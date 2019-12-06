@@ -1,5 +1,11 @@
 # PortalWEBApp
 
+```
+ATTENTION !
+Une fois le repo cloné, il est nécessaire d'installer Angular CLI avec le lien ci dessous.
+```
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.8.
 
 ## Development server
