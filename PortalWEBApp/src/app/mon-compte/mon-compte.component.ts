@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthComponent } from '../auth/auth.component';
+import { Authentification, AuthService } from '../auth.service';
+import { HttpClient } from '@angular/common/http';
 import { Identity } from '../identity';
 
 @Component({
@@ -7,12 +10,13 @@ import { Identity } from '../identity';
   styleUrls: ['./mon-compte.component.scss']
 })
 export class MonCompteComponent implements OnInit {
-
-  public monIdentite : Identity = new Identity("test","","","","");
+  
+  identite : Identity;
   
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }

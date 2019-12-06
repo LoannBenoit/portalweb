@@ -12,8 +12,13 @@ export class AuthComponent implements OnInit {
 
   public auth: Authentification = new Authentification('','');
   public isAuth = false;
-  public identite: Identity ;
+  public pseudo;
+  public dTCreation;
+  public nom;
+  public prenom;
+  public token;
 
+  identite : Identity;
   constructor(private authService: AuthService, private http: HttpClient) { }
 
   ngOnInit() {
@@ -25,9 +30,14 @@ export class AuthComponent implements OnInit {
     (response: any) => {
         console.log(response);
         if(response.token !== ""){
-          this.isAuth = true;
           this.identite = new Identity(response.pseudo,Date.now(), response.nom, response.prenom, response.token);
-          console.log("Authentifié ! -->" + this.identite.pseudo);
+          this.pseudo = response.pseudo;
+          this.dTCreation = Date.now();
+          this.nom = response.nom;
+          this.prenom = response.prenom;
+          this.token = response.token;
+          this.isAuth = true;
+          console.log("Authentifié ! -->" + this.pseudo);
         }
        
       }
