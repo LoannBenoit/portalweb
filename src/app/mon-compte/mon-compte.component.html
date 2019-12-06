@@ -1,0 +1,34 @@
+<p>mon-compte works!</p>
+<div class="background">
+    <img src="../../../assets/clement-m-h7vKkZNNThE-unsplash.jpg" alt="background">
+</div>
+<div id="MonCompte">
+    <div class="header">
+        <span>GENERAL</span>
+        <span class="edit"> edit</span>
+    </div>
+    <div class="content">
+        <div>Nom</div>
+        <div>{{identite.pseudo}}</div>
+        <div>Prénom</div>
+        <div></div>
+    </div>
+    <!-- <form class="content" *ngIf="identityEdit" #myForm="ngForm">
+        <div>Nom</div>
+        <div>
+            <input [(ngModel)]="identityEdit.firstName" #firstname="ngModel" name="firstname" required minlength="3">
+            <div *ngIf="firstname.invalid && ( firstname.touched || firstname.dirty || submitOnTime)">
+                    <div *ngIf="firstname.errors.required">Nom requis</div>
+                    <div *ngIf="firstname.errors.minlength">Le nom doit faire minium 3 caractères</div>
+            </div>
+        </div>
+        <div>Prénom</div>
+        <div>
+            <input [(ngModel)]="identityEdit.lastName" #lastname="ngModel" name="lastname" required>
+            <div *ngIf="lastname.invalid && lastname.touched && lastname.dirty">
+                <div *ngIf="lastname.errors.required">Prénom requis</div>
+            </div>
+        </div>
+        <button type="submit"  (click)="save()">Enregistrer</button>
+    </form> -->
+</div>
