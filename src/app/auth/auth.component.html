@@ -14,7 +14,7 @@
                     <input id="password" type="password" name="password" placeholder="Mot de passe" [(ngModel)]="auth.password">
                 </div><br>
                     <input id="loginBtn" type="button" value="Login" (click)="register()">
-                <div *ngIf="isAuth">AUTHENTIFY</div>
+                <div *ngIf="auth.isAuth">AUTHENTIFY</div>
         </div>
     </div>
 </div>

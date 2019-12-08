@@ -1,7 +1,7 @@
 <div class="loging page">
     <ul>
         <li><a routerLink="/">Accueil</a></li>
-        <li><a routerLink="/login">Connexion</a></li>
+        <li *ngIf="!isAuth"><a routerLink="/login">Connexion</a></li>
         <li><a routerLink="/mon-compte">Mon Compte</a></li>
     </ul>
 </div>

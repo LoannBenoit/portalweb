@@ -1,0 +1,11 @@
+.header{
+    padding: 1em;
+    background-color: green;
+    color : white;
+}
+
+.content{
+    padding: 1em;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}

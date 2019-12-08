@@ -5,13 +5,22 @@
 <div id="MonCompte">
     <div class="header">
         <span>GENERAL</span>
+    </div>
+    <div class="content">
+        <div>Pseudo</div>
+        <div>{{identite.pseudo}}</div>
+        <div>Date de création</div>
+        <div>{{identite.dateCreation}}</div>
+    </div>
+    <div class="header">
+        <span>IDENTITE</span>
         <span class="edit"> edit</span>
     </div>
     <div class="content">
         <div>Nom</div>
-        <div>{{identite.pseudo}}</div>
-        <div>Prénom</div>
-        <div></div>
+        <div>{{identite.nom}}</div>
+        <div>Prenom</div>
+        <div>{{identite.prenom}}</div>
     </div>
     <!-- <form class="content" *ngIf="identityEdit" #myForm="ngForm">
         <div>Nom</div>

@@ -11,12 +11,25 @@ import { Identity } from '../identity';
 })
 export class MonCompteComponent implements OnInit {
   
-  identite : Identity;
-  
-  constructor() { }
+  public identite : Identity = new Identity("","","","","");
+  auth;
+
+  constructor(private serv: AuthService) {
+    console.log("constructor");
+   }
+
 
   ngOnInit() {
+    console.log("ngOnInit");
+
+    this.identite.pseudo = localStorage.getItem("pseudo");
+   
+    this.identite.dateCreation = localStorage.getItem("dtCreation");
+    this.identite.nom = localStorage.getItem("nom");
+    this.identite.prenom = localStorage.getItem("prenom");
+    this.identite.token = localStorage.getItem("token");
     
+    console.log(this.identite);
   }
 
 }

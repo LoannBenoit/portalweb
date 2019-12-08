@@ -6,7 +6,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AuthService {
 
-  isAuth = false;
+  public isAuth=false;
+  public dTCreation;
+  public nom ;
+  public prenom;
+  public token;
 
   constructor(private http: HttpClient) { }
 
@@ -17,4 +21,9 @@ export class AuthService {
 }
 export class Authentification{
   constructor(public pseudo, public password){}
+  public isAuth;
+  public dTCreation;
+  public nom ;
+  public prenom;
+  public token; 
 }

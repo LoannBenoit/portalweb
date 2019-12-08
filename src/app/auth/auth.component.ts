@@ -11,14 +11,9 @@ import { Identity } from '../identity';
 export class AuthComponent implements OnInit {
 
   public auth: Authentification = new Authentification('','');
-  public isAuth = false;
-  public pseudo;
-  public dTCreation;
-  public nom;
-  public prenom;
-  public token;
+  public isAuth;
 
-  identite : Identity;
+  //identite : Identity;
   constructor(private authService: AuthService, private http: HttpClient) { }
 
   ngOnInit() {
@@ -30,14 +25,18 @@ export class AuthComponent implements OnInit {
     (response: any) => {
         console.log(response);
         if(response.token !== ""){
-          this.identite = new Identity(response.pseudo,Date.now(), response.nom, response.prenom, response.token);
-          this.pseudo = response.pseudo;
-          this.dTCreation = Date.now();
-          this.nom = response.nom;
-          this.prenom = response.prenom;
-          this.token = response.token;
-          this.isAuth = true;
-          console.log("Authentifié ! -->" + this.pseudo);
+
+
+          localStorage.setItem("pseudo",response.pseudo);
+          var date = new Date();
+          var sDate = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+          localStorage.setItem("dtCreation",sDate);
+          localStorage.setItem("nom",response.nom);
+          localStorage.setItem("prenom",response.prenom);
+          localStorage.setItem("token",response.token);
+          localStorage.setItem("isAuth", "true");
+
+          this.auth.isAuth = true;
         }
        
       }
