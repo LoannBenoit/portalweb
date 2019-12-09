@@ -2,7 +2,8 @@
     <ul>
         <li><a routerLink="/">Accueil</a></li>
         <li *ngIf="!isAuth"><a routerLink="/login">Connexion</a></li>
-        <li><a routerLink="/mon-compte">Mon Compte</a></li>
+        <li *ngIf="isAuth"><a routerLink="/mon-compte">Mon Compte</a></li>
+        <button *ngIf="isAuth" (click)="deconnect()">Deconnexion</button>
     </ul>
 </div>
 <router-outlet></router-outlet>

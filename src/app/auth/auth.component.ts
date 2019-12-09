@@ -11,7 +11,7 @@ import { Identity } from '../identity';
 export class AuthComponent implements OnInit {
 
   public auth: Authentification = new Authentification('','');
-  public isAuth;
+  //public isAuth;
 
   //identite : Identity;
   constructor(private authService: AuthService, private http: HttpClient) { }

@@ -7,5 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'PortalWEB';
-  isAuth = false;
+  
+  sisAuth = localStorage.getItem("isAuth");
+  isAuth = this.sisAuth.toLowerCase() == 'true' ? true : false; 
+
+
+  deconnect(){
+    localStorage.setItem("isAuth", "false");
+    this.sisAuth = localStorage.getItem("isAuth");
+    this.isAuth = this.sisAuth.toLowerCase() == 'true' ? true : false; 
+    console.log("Deconnecté");
+  }
 }
