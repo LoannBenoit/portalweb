@@ -1,4 +1,3 @@
-<p>mon-compte works!</p>
 <div class="background">
     <img src="../../../assets/clement-m-h7vKkZNNThE-unsplash.jpg" alt="background">
 </div>
@@ -14,30 +13,32 @@
     </div>
     <div class="header">
         <span>IDENTITE</span>
-        <span class="edit"> edit</span>
+        <span class="edit" (click)="edit()">edit</span>
     </div>
-    <div class="content">
+    <div class="content" *ngIf="!identityEdit">
         <div>Nom</div>
         <div>{{identite.nom}}</div>
-        <div>Prenom</div>
+        <div>Prénom</div>
         <div>{{identite.prenom}}</div>
     </div>
-    <!-- <form class="content" *ngIf="identityEdit" #myForm="ngForm">
+    <form class="content" *ngIf="identityEdit" #myForm="ngForm">
         <div>Nom</div>
         <div>
-            <input [(ngModel)]="identityEdit.firstName" #firstname="ngModel" name="firstname" required minlength="3">
-            <div *ngIf="firstname.invalid && ( firstname.touched || firstname.dirty || submitOnTime)">
-                    <div *ngIf="firstname.errors.required">Nom requis</div>
-                    <div *ngIf="firstname.errors.minlength">Le nom doit faire minium 3 caractères</div>
+            <input [(ngModel)]="identityEdit.nom" #nom="ngModel" name="nom" required minlength="3">
+            <div *ngIf="nom.invalid && ( nom.touched || nom.dirty || submitOnTime)">
+                    <div *ngIf="nom.errors.required">Nom requis</div>
+                    <div *ngIf="nom.errors.minlength">Le Nom doit faire minium 3 caractères</div>
             </div>
         </div>
         <div>Prénom</div>
         <div>
-            <input [(ngModel)]="identityEdit.lastName" #lastname="ngModel" name="lastname" required>
-            <div *ngIf="lastname.invalid && lastname.touched && lastname.dirty">
-                <div *ngIf="lastname.errors.required">Prénom requis</div>
+            <input [(ngModel)]="identityEdit.prenom" #prenom="ngModel" name="prenom" required minlength="3">
+            <div *ngIf="prenom.invalid && ( prenom.touched || prenom.dirty || submitOnTime)">
+                <div *ngIf="prenom.errors.required">Prénom requis</div>
+                <div *ngIf="prenom.errors.minlength">Le Prénom doit faire minium 3 caractères</div>
             </div>
         </div>
         <button type="submit"  (click)="save()">Enregistrer</button>
-    </form> -->
+        <div>{{message}}</div>
+    </form> 
 </div>

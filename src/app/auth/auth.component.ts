@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Authentification, AuthService } from '../auth.service';
+import { loginUser } from '../auth.service';
 import { HttpClient } from '@angular/common/http';
-import { Identity } from '../identity';
 
 @Component({
   selector: 'app-auth',
@@ -10,22 +9,21 @@ import { Identity } from '../identity';
 })
 export class AuthComponent implements OnInit {
 
-  public auth: Authentification = new Authentification('','');
-  //public isAuth;
+  public loginUser: loginUser = new loginUser('','');
+  public message = "";
 
-  //identite : Identity;
-  constructor(private authService: AuthService, private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
   }
 
   register(){
-    console.log(this.auth);
-    this.http.post('http://localhost:3000/login', this.auth).subscribe(
+    console.log(this.loginUser);
+    this.http.post('http://localhost:3000/login', this.loginUser).subscribe(
     (response: any) => {
         console.log(response);
+        
         if(response.token !== ""){
-
 
           localStorage.setItem("pseudo",response.pseudo);
           var date = new Date();
@@ -35,10 +33,11 @@ export class AuthComponent implements OnInit {
           localStorage.setItem("prenom",response.prenom);
           localStorage.setItem("token",response.token);
           localStorage.setItem("isAuth", "true");
-
-          this.auth.isAuth = true;
+          window.location.href = "/";
         }
-       
+      },
+      (error : any) => {
+        this.message = "Echec de l'authentification"
       }
     )
 }

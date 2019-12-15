@@ -1,9 +1,7 @@
-<div class="loging page">
-    <ul>
-        <li><a routerLink="/">Accueil</a></li>
-        <li *ngIf="!isAuth"><a routerLink="/login">Connexion</a></li>
-        <li *ngIf="isAuth"><a routerLink="/mon-compte">Mon Compte</a></li>
-        <button *ngIf="isAuth" (click)="deconnect()">Deconnexion</button>
-    </ul>
-</div>
+<ul>
+    <li><a routerLink="/">Accueil</a></li>
+    <li><a *ngIf="!isAuth" routerLink="/login">Connexion</a></li>
+    <li><a *ngIf="isAuth" routerLink="/mon-compte">Mon Compte</a></li>
+    <li><a *ngIf="isAuth" (click)="deconnect()">Deconnexion</a></li>
+</ul>
 <router-outlet></router-outlet>

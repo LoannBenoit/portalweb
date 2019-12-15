@@ -1,29 +1,38 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Identity } from './identity';
+import { tick } from '@angular/core/testing';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  public isAuth=false;
-  public dTCreation;
-  public nom ;
-  public prenom;
-  public token;
+  isAuth = false;
 
-  constructor(private http: HttpClient) { }
+  //user : Identity = new Identity("test","","","","");
+  user : Identity;
 
-  public authentify(param: Authentification){
-    
+  constructor() { }
+
+  public authentify(pseudo, dateCreation, nom, prenom, token){
+    this.user = new Identity(pseudo,dateCreation,nom,prenom,token);
+    console.log("user enregistré");
+    this.isAuth = true;
+    console.log(this.isAuth);
+  }
+
+  public getAuth(){
+    console.log("recuperation du user :" + this.user.pseudo);
+    return this.user;
   }
 
 }
-export class Authentification{
+export class loginUser{
+
   constructor(public pseudo, public password){}
-  public isAuth;
-  public dTCreation;
-  public nom ;
-  public prenom;
-  public token; 
+}
+export class editUser{
+
+  constructor(public nom, public prenom, public token){}
 }
