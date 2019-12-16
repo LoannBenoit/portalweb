@@ -8,6 +8,7 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { AuthComponent } from './auth/auth.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MonCompteComponent } from './mon-compte/mon-compte.component'; 
+import { AuthGuardGuard } from './auth-guard.guard';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { MonCompteComponent } from './mon-compte/mon-compte.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [AuthGuardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

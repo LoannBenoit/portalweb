@@ -7,11 +7,11 @@
             <h3 id="suggestionMessage">Veuillez vous identifier</h3>
 
                 <div class="pseudoDiv">
-                    <input id="pseudo" type="text" name="pseudo" placeholder="Pseudo" [(ngModel)]="loginUser.pseudo">
+                    <input id="pseudo" type="text" name="pseudo" placeholder="Pseudo" [(ngModel)]="pseudo">
                 </div><br>
 
                 <div class="passwordDiv">
-                    <input id="password" type="password" name="password" placeholder="Mot de passe" [(ngModel)]="loginUser.password">
+                    <input id="password" type="password" name="password" placeholder="Mot de passe" [(ngModel)]="password">
                 </div><br>
                     <input id="loginBtn" type="button" value="Login" (click)="register()">
                 <div>{{message}}</div>

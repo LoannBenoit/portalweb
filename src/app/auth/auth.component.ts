@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { loginUser } from '../auth.service';
+import { AuthService } from '../auth.service';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-auth',
@@ -9,36 +11,33 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AuthComponent implements OnInit {
 
-  public loginUser: loginUser = new loginUser('','');
+  pseudo: string;
+  password: string;
   public message = "";
+  public sDate:string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authservice: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
 
   register(){
-    console.log(this.loginUser);
-    this.http.post('http://localhost:3000/login', this.loginUser).subscribe(
-    (response: any) => {
-        console.log(response);
-        
-        if(response.token !== ""){
-
-          localStorage.setItem("pseudo",response.pseudo);
-          var date = new Date();
-          var sDate = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-          localStorage.setItem("dtCreation",sDate);
-          localStorage.setItem("nom",response.nom);
-          localStorage.setItem("prenom",response.prenom);
-          localStorage.setItem("token",response.token);
-          localStorage.setItem("isAuth", "true");
-          window.location.href = "/";
-        }
+    this.authservice.login(this.pseudo,this.password).subscribe(
+      (data: any)=> {  
+          if (data != ""){
+            this.sDate = formatDate(Date.now(),"dd-MM-yyyy HH:mm:ss","en-FR") ;
+            this.authservice.setSession(data.pseudo,this.sDate,data.nom,data.prenom,data.token);
+            this.message = "Authentifié !";
+            this.router.navigate(["/"]);
+          }        
       },
-      (error : any) => {
-        this.message = "Echec de l'authentification"
+      (error)=> {
+        console.log(error.status);
+        if (error.status == 401){
+          this.message = "Echec de l'authentification.";
+        }
       }
-    )
-}
+    );
+    
+  }
 }

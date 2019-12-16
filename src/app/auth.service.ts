@@ -8,31 +8,58 @@ import { tick } from '@angular/core/testing';
 })
 export class AuthService {
 
-  isAuth = false;
-
-  //user : Identity = new Identity("test","","","","");
+  isAuth: boolean;
   user : Identity;
 
-  constructor() { }
-
-  public authentify(pseudo, dateCreation, nom, prenom, token){
-    this.user = new Identity(pseudo,dateCreation,nom,prenom,token);
-    console.log("user enregistré");
-    this.isAuth = true;
-    console.log(this.isAuth);
+  constructor(private http: HttpClient) { 
   }
 
-  public getAuth(){
-    console.log("recuperation du user :" + this.user.pseudo);
-    return this.user;
+
+  public login(pseudo, password){
+    return this.http.post('http://localhost:3000/login', {pseudo,password} );
   }
 
-}
-export class loginUser{
+  public logout(){
+      localStorage.setItem("pseudo","");
+      localStorage.setItem("dtCreation","");
+      localStorage.setItem("nom","");
+      localStorage.setItem("prenom","");
+      localStorage.setItem("token","");
+      localStorage.setItem("isAuth", "false");
+      this.user = null;
+      console.log("Service logout");
+  }
+  setSession(pseudo, dtCReation, nom, prenom, token){
+        localStorage.setItem("pseudo",pseudo);
+        localStorage.setItem("dtCreation",dtCReation);
+        localStorage.setItem("nom",nom);
+        localStorage.setItem("prenom",prenom);
+        localStorage.setItem("token",token);
+        localStorage.setItem("isAuth", "true");
 
-  constructor(public pseudo, public password){}
-}
-export class editUser{
+        console.log("user enregistré");
+        this.isAuth = true;
+  }
 
-  constructor(public nom, public prenom, public token){}
+  get session() : Identity { 
+    this.user = new Identity(
+      localStorage.getItem("pseudo"),
+      localStorage.getItem("dtCreation"),
+      localStorage.getItem("nom"),
+      localStorage.getItem("prenom"),
+      localStorage.getItem("token")
+    );
+    return this.user; 
+  }
+
+  isLogin():boolean {
+    return this.isAuth;
+      // if (localStorage.getItem("isAuth") == "true"){
+      //   return true;
+      // }
+      // else{
+      //   return false;
+      // }
+  }
+
 }

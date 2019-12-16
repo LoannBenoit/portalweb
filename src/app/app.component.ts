@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, RootRenderer } from '@angular/core';
+import { AuthService } from '../app/auth.service';
+import { Router } from '@angular/router';
+import { AuthGuardGuard } from './auth-guard.guard';
 
 @Component({
   selector: 'app-root',
@@ -7,23 +10,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'PortalWEB';
+  isAuth: boolean = localStorage.getItem("isAuth") == "true" ? true : false; 
+  //isAuth: boolean ;
   
-  sisAuth = localStorage.getItem("isAuth");
-  isAuth = this.sisAuth.toLowerCase() == 'true' ? true : false; 
-  
+  constructor(private authService: AuthService,private router: Router){
+    this.isAuth = localStorage.getItem("isAuth") == "true" ? true : false; 
+  }
 
   deconnect(){
-    
-    localStorage.setItem("pseudo","");
-    localStorage.setItem("dtCreation","");
-    localStorage.setItem("nom","");
-    localStorage.setItem("prenom","");
-    localStorage.setItem("token","");
-    localStorage.setItem("isAuth", "false");
-    
-    this.sisAuth = localStorage.getItem("isAuth");
-    this.isAuth = this.sisAuth.toLowerCase() == 'true' ? true : false; 
-    window.location.href = "/";
+    this.authService.logout();
+    this.router.navigate(["/"]);
+    this.isAuth = localStorage.getItem("isAuth") == "true" ? true : false; 
     console.log("Deconnecté");
   }
 }

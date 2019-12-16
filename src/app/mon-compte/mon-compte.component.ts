@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService, editUser } from '../auth.service';
+import { AuthService } from '../auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Identity } from '../identity';
 
@@ -12,26 +12,22 @@ export class MonCompteComponent implements OnInit {
   
   public identite : Identity = new Identity("","","","","");
   public identityEdit : Identity ;
-  public editUser: editUser = new editUser('','','');
   public isValid = false;
   public message = "";
 
   submitOnTime= false;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private autService: AuthService) {
     console.log("constructor");
    }
    
   ngOnInit() {
     console.log("ngOnInit");
 
-    this.identite.pseudo = localStorage.getItem("pseudo");
-    this.identite.dateCreation = localStorage.getItem("dtCreation");
-    this.identite.nom = localStorage.getItem("nom");
-    this.identite.prenom = localStorage.getItem("prenom");
-    this.identite.token = localStorage.getItem("token");
+    console.log(this.autService.session);
 
-    console.log(this.identite);
+    this.identite = this.autService.session;
+   
   }
 
   edit(){
@@ -50,18 +46,17 @@ export class MonCompteComponent implements OnInit {
   }
 
   save() {
-    this.editUser.nom = this.identityEdit.nom;
-    this.editUser.prenom = this.identityEdit.prenom;
-    this.editUser.token = this.identityEdit.token;
-    console.log(this.editUser);
+    var nom = this.identityEdit.nom;
+    var prenom = this.identityEdit.prenom;
+    var token = this.identityEdit.token;
 
-    this.http.post('http://localhost:3000/edit', this.editUser).subscribe(
+    this.http.post('http://localhost:3000/edit', {nom, prenom, token}).subscribe(
       (response: any) => {
           console.log(response);
           this.isValid = response.valid;
           if(this.isValid){
-            this.identite.nom = this.editUser.nom;
-            this.identite.prenom = this.editUser.prenom;
+            this.identite.nom = nom;
+            this.identite.prenom = prenom;
             localStorage.setItem("nom",this.identite.nom);
             localStorage.setItem("prenom",this.identite.prenom);
             this.message = "Server : Enregistré !"
