@@ -1,11 +1,46 @@
+#MonCompte {
+    margin: 5% auto;
+    width: 30%;
+}
+
 .header{
     padding: 1em;
-    background-color: green;
+    background: #152a2f;
     color : white;
+    display: flex;
+    flex-direction: column;
 }
 
 .content{
     padding: 1em;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+}
+
+.edit:hover {
+    cursor: pointer;
+}
+
+.identity, .edit {
+    width: 20%;
+}
+
+#name, #firstname {
+    background: none;
+    border: none;
+    border-bottom: 1px solid #152a2f;
+}
+
+#name:focus, #firstname:focus {
+    outline: none;
+}
+
+#submitBtn {
+    width: 60%;
+    border-radius: 25px;
+    color: white;
+    background: #152a2f;
+    &:focus {
+        outline: none;
+    }
 }

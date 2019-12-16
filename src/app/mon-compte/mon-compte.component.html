@@ -1,44 +1,44 @@
-<div class="background">
-    <img src="../../../assets/clement-m-h7vKkZNNThE-unsplash.jpg" alt="background">
-</div>
-<div id="MonCompte">
-    <div class="header">
-        <span>GENERAL</span>
+    <div class="background">
+        <img src="../../../assets/clement-m-h7vKkZNNThE-unsplash.jpg" alt="background">
     </div>
-    <div class="content">
-        <div>Pseudo</div>
-        <div>{{identite.pseudo}}</div>
-        <div>Date de création</div>
-        <div>{{identite.dateCreation}}</div>
-    </div>
-    <div class="header">
-        <span>IDENTITE</span>
-        <span class="edit" (click)="edit()">edit</span>
-    </div>
-    <div class="content" *ngIf="!identityEdit">
-        <div>Nom</div>
-        <div>{{identite.nom}}</div>
-        <div>Prénom</div>
-        <div>{{identite.prenom}}</div>
-    </div>
-    <form class="content" *ngIf="identityEdit" #myForm="ngForm">
-        <div>Nom</div>
-        <div>
-            <input [(ngModel)]="identityEdit.nom" #nom="ngModel" name="nom" required minlength="3">
-            <div *ngIf="nom.invalid && ( nom.touched || nom.dirty || submitOnTime)">
+    <div id="MonCompte">
+        <div class="header">
+            <span>GENERAL</span>
+        </div>
+        <div class="content">
+            <div>Pseudo</div>
+            <div>{{identite.pseudo}}</div>
+            <div>Date de création</div>
+            <div>{{identite.dateCreation}}</div>
+        </div>
+        <div class="header">
+            <span class="identity">IDENTITE</span>
+            <span class="edit" (click)="edit()">edit</span>
+        </div>
+        <div class="content" *ngIf="!identityEdit">
+            <div>Nom</div>
+            <div class="nameInput">{{identite.nom}}</div>
+            <div>Prénom</div>
+            <div class="firstnameInput">{{identite.prenom}}</div>
+        </div>
+        <form class="content" *ngIf="identityEdit" #myForm="ngForm">
+            <div>Nom</div>
+            <div>
+                <input id="name" [(ngModel)]="identityEdit.nom" #nom="ngModel" name="nom" required minlength="3">
+                <div *ngIf="nom.invalid && ( nom.touched || nom.dirty || submitOnTime)">
                     <div *ngIf="nom.errors.required">Nom requis</div>
                     <div *ngIf="nom.errors.minlength">Le Nom doit faire minium 3 caractères</div>
+                </div>
             </div>
-        </div>
-        <div>Prénom</div>
-        <div>
-            <input [(ngModel)]="identityEdit.prenom" #prenom="ngModel" name="prenom" required minlength="3">
-            <div *ngIf="prenom.invalid && ( prenom.touched || prenom.dirty || submitOnTime)">
-                <div *ngIf="prenom.errors.required">Prénom requis</div>
-                <div *ngIf="prenom.errors.minlength">Le Prénom doit faire minium 3 caractères</div>
+            <div>Prénom</div>
+            <div>
+                <input id="firstname" [(ngModel)]="identityEdit.prenom" #prenom="ngModel" name="prenom" required minlength="3">
+                <div *ngIf="prenom.invalid && ( prenom.touched || prenom.dirty || submitOnTime)">
+                    <div *ngIf="prenom.errors.required">Prénom requis</div>
+                    <div *ngIf="prenom.errors.minlength">Le Prénom doit faire minium 3 caractères</div>
+                </div>
             </div>
-        </div>
-        <button type="submit"  (click)="save()">Enregistrer</button>
-        <div>{{message}}</div>
-    </form> 
-</div>
+            <button id="submitBtn" type="submit" (click)="save()">Enregistrer</button>
+            <div>{{message}}</div>
+        </form>
+    </div>

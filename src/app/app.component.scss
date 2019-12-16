@@ -1,13 +1,25 @@
+body {
+  display: flex;
+  flex-direction: column;
+}
+
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #152A30;
+    display: flex;
+    flex-direction: row;
   }
   
   li {
     float: left;
+  }
+
+  #login, #logout {
+    position: absolute;
+    right: 0px;
   }
   
   li a {

@@ -1,9 +1,29 @@
-<div class="background">
-    <img src="../../../assets/clement-m-h7vKkZNNThE-unsplash.jpg" alt="background">
-</div>
-<div class="body">
-    <div *ngIf="isAuth">
-        Bienvenue {{pseudo}} ,
+<div id="home">
+
+    <div class="background">
+        <img src="../../../assets/clement-m-h7vKkZNNThE-unsplash.jpg" alt="background">
     </div>
-    Ceci est un site réalisé par BENOIT Loann et MICHEL Sullivan
+
+    <div class="content">
+        <div class="welcome" *ngIf="isAuth">
+            <h1 class="welcomeMsg">Bienvenue {{pseudo}} !</h1>
+        </div>
+
+        <div class="title">
+            <h2 class="homeTitle">Ceci est un site réalisé par :</h2>
+        </div>
+
+        <div id="photoContent" style="display: flex;">
+            <div id="Sullivan">
+                <p class="SullivanParagraph">Sullivan MICHEL</p>
+                <img src="../../assets/sullivan.jpg" alt="Sullivan picture">
+            </div>
+
+            <div id="Loann">
+                <p class="LoannParagraph">Loann BENOIT</p>
+                <img src="../../assets/loann.jpg" alt="Loann picture">
+            </div>
+        </div>
+
+    </div>
 </div>

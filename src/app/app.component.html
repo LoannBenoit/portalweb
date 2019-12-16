@@ -1,7 +1,7 @@
-<ul>
+<ul class="navbar">
     <li><a routerLink="/">Accueil</a></li>
-    <li><a *ngIf="!isAuth" routerLink="/login">Connexion</a></li>
+    <li id="login"><a *ngIf="!isAuth" routerLink="/login">Connexion</a></li>
     <li><a *ngIf="isAuth" routerLink="/mon-compte">Mon Compte</a></li>
-    <li><a *ngIf="isAuth" (click)="deconnect()">Deconnexion</a></li>
+    <li id="logout"><a *ngIf="isAuth" (click)="deconnect()">Deconnexion</a></li>
 </ul>
 <router-outlet></router-outlet>
