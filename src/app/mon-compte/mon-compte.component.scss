@@ -8,7 +8,7 @@
     background: #152a2f;
     color : white;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 .content{
@@ -29,6 +29,10 @@
     background: none;
     border: none;
     border-bottom: 1px solid #152a2f;
+}
+
+.edit svg {
+    fill: white;
 }
 
 #name:focus, #firstname:focus {
