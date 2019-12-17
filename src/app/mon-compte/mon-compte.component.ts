@@ -17,16 +17,16 @@ export class MonCompteComponent implements OnInit {
 
   submitOnTime= false;
 
-  constructor(private http: HttpClient, private autService: AuthService) {
+  constructor(private http: HttpClient, private authService: AuthService) {
     console.log("constructor");
    }
    
   ngOnInit() {
     console.log("ngOnInit");
 
-    console.log(this.autService.session);
+    console.log(this.authService.session);
 
-    this.identite = this.autService.session;
+    this.identite = this.authService.session;
    
   }
 

@@ -10,17 +10,18 @@ import { AuthGuardGuard } from './auth-guard.guard';
 })
 export class AppComponent {
   title = 'PortalWEB';
-  isAuth: boolean = localStorage.getItem("isAuth") == "true" ? true : false; 
-  //isAuth: boolean ;
   
+  isAuth = this.authService.isLogin()
+
+  ngOnInit(){
+  }
   constructor(private authService: AuthService,private router: Router){
-    this.isAuth = localStorage.getItem("isAuth") == "true" ? true : false; 
   }
 
   deconnect(){
     this.authService.logout();
-    this.router.navigate(["/"]);
-    this.isAuth = localStorage.getItem("isAuth") == "true" ? true : false; 
+    //this.router.navigate(["/"]);
+    window.location.href = "/";
     console.log("Deconnecté");
   }
 }

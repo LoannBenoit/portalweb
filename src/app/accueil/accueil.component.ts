@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-accueil',
@@ -8,11 +9,10 @@ import { Component, OnInit } from '@angular/core';
 export class AccueilComponent implements OnInit {
   
   title = 'Accueil'
-  pseudo = localStorage.getItem("pseudo");
-  sisAuth = localStorage.getItem("isAuth");
-  isAuth = this.sisAuth.toLowerCase() == 'true' ? true : false; 
+  pseudo = this.authService.pseudo;
+  isAuth = this.authService.isLogin()
   
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
   }

@@ -28,7 +28,8 @@ export class AuthComponent implements OnInit {
             this.sDate = formatDate(Date.now(),"dd-MM-yyyy HH:mm:ss","en-FR") ;
             this.authservice.setSession(data.pseudo,this.sDate,data.nom,data.prenom,data.token);
             this.message = "Authentifié !";
-            this.router.navigate(["/"]);
+            //this.router.navigate(["/"]);
+            window.location.href = "/";
           }        
       },
       (error)=> {

@@ -10,6 +10,7 @@ export class AuthService {
 
   isAuth: boolean;
   user : Identity;
+  pseudo = localStorage.getItem("pseudo");
 
   constructor(private http: HttpClient) { 
   }
@@ -53,13 +54,12 @@ export class AuthService {
   }
 
   isLogin():boolean {
-    return this.isAuth;
-      // if (localStorage.getItem("isAuth") == "true"){
-      //   return true;
-      // }
-      // else{
-      //   return false;
-      // }
+      if (localStorage.getItem("isAuth") == "true"){
+        return true;
+      }
+      else{
+        return false;
+      }
   }
 
 }
