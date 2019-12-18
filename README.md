@@ -1,5 +1,7 @@
 # PortalWEBApp
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/def12ae3f6a0402480a2e615c8610923)](https://www.codacy.com/manual/LoannBenoit/portalweb?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=LoannBenoit/portalweb&amp;utm_campaign=Badge_Grade)
+
 ```
 ATTENTION !
 Une fois le repo cloné, il est nécessaire d'installer Angular CLI avec le lien ci dessous.
